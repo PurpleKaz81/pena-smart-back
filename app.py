@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS
 from utilities import qualifiers
 import sys
@@ -13,6 +13,10 @@ def hello_world():
 @app.route('/api/qualifiers', methods=['GET'])
 def get_all_qualifiers():
     return qualifiers.get_qualifiers()
+
+@app.route('/api/calculateQualifierYears', methods=['POST'])
+def get_qualifier_years_total():
+    return qualifiers.calculate_qualifier_years_for_request(request.get_json()['qualifiers'])
 
 
 if __name__ == '__main__':

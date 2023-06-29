@@ -1,4 +1,5 @@
 from flask import jsonify
+from .calculate_qualifier_years import calculate_qualifier_years_total
 
 
 def get_qualifiers():
@@ -15,3 +16,6 @@ def get_qualifiers():
     ]
 
     return jsonify(qualifiers)
+
+def calculate_qualifier_years_for_request(qualifiers):
+    return calculate_qualifier_years_total(qualifiers)
